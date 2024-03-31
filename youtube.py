@@ -24,7 +24,6 @@ def main(page:Page):
 
     def bt_click(event):
         carpeta_actual = os.getcwd()
-        #print(carpeta_actual)
         yt = YouTube(txt_url.value)
         video = yt.streams.get_highest_resolution()
         video.download(output_path = carpeta_actual)
@@ -36,7 +35,6 @@ def main(page:Page):
     def bt_click_audio(event):
         
         carpeta_actual = os.getcwd()
-        #print(carpeta_actual)
         yt = YouTube(txt_url.value)
         page.splash = ProgressBar(visible=True)
         audio= yt.streams.filter(only_audio=True, subtype='webm', abr='160kbps').first()
