@@ -25,11 +25,15 @@ def main(page:Page):
     def bt_click(event):
         carpeta_actual = os.getcwd()
         yt = YouTube(txt_url.value)
+        page.splash = ProgressBar(visible=True)
         video = yt.streams.get_highest_resolution()
+        page.update()
         video.download(output_path = carpeta_actual)
+        time.sleep(0.5)
         page.dialog = dlg_missatge
         dlg_missatge.content=Text(f"{carpeta_actual}")
         dlg_missatge.open = True
+        page.splash = ProgressBar(visible=False)
         page.update()
     
     def bt_click_audio(event):
